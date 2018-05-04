@@ -1,0 +1,40 @@
+1.scalable  adj.capable of being scaled
+example:
+Cloud computing and grid computing are scalable. 
+
+云计算和网格计算都是可伸缩的。
+2. leverages  noun.the ability to influence what people do
+example:
+The spade and fork have longer shafts, providing better leverage.
+
+锹和耙的手柄较长，可发挥较好的杠杆作用。
+
+leveraged,leverages v.促使…改变( leverage的过去式和过去分词 );
+
+3.distinctive  adj.having a quality or characteristic that makes sth different and easily noticed
+example:
+The male bird has distinctive white markings on its head.
+
+雄鸟的头上有明显的白色斑纹。
+
+exclusive adj. （个人或集体）专用的，专有的，独有的，独占的 only to be used by one particular person or group; only given to one particular person or group
+example:
+The hotel has exclusive access to the beach.
+
+这家旅馆有通向海滩的专用通道
+2018-04-11
+
+4.hierarchy  n.	[计] 分层，层次; 等级制度; 统治集团; 天使的级别或等级
+Like most other American companies with a rigid hierarchy, workers and managers had strictly defined duties
+
+5.rigid adj.僵硬的，严格的;
+
+Several colleges in our study have rigid rules about student conduct
+
+6.nested  adj.	嵌套的,v.筑巢( nest的过去式和过去分词 );
+
+In the makeGrades method I use a code block nested inside of another code block
+
+7.increment n.	增量; 增长; 增额; 定期的加薪;
+Many teachers qualify for an annual increment.
+许多老师都有资格获得每年的加薪。

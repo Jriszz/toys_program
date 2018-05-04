@@ -1,0 +1,7 @@
+os.path.join(os.path.dirname(os.path.abspath('.')),'\screen\')
+获取相对路径的上级目录
+os.path.dirname(sys.argv[0])
+sys.path[0]
+获取绝对路径的上级目录
+os.path.getcwd()
+获取上级目录

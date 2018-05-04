@@ -1,0 +1,28 @@
+1.ADB查看当前运行中activity进程
+adb shell dumpsys acitivity top | findstr ACTIVITY
+adb shell ps pid
+demo：
+desired_caps = {
+            'platformName': 'Android',
+            'fastReset': 'false',
+            'deviceName': 'XXXXXX',
+            'appPackage': 'com.tencent.mm',
+            'appActivity': '.ui.LauncherUI',
+            'fullReset': 'false',
+            'unicodeKeyboard': 'True',
+            'resetKeyboard': 'True',
+            'chromeOptions': {
+                'androidProcess': 'com.tencent.mm:appbrand0'
+                }
+ 2.chrome://inspect/#设备号 查看webview的元素
+
+2.在测试微信或者微信小程序时webview
+要添加androidprocess的进程名
+
+问题
+
+chrome://inspect/#devices 可以检测到手机 但是手机浏览器页面检测不到？
+
+因为这个功能需要你能访问谷歌才行啊。
+
+这两天，墙建起来了。      

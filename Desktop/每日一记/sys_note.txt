@@ -1,0 +1,5 @@
+2018-04-04
+1.sys
+sys.argv[]是用来获取命令行参数的，sys.argv[0]表示代码本身文件路径，所以参数从1开始
+sys.argv[0] --sys.argv[0]表示代码本身文件路径
+2.字符串中添加变量 “XXX{}XXXX”.format(arg)/"name=%s sex=%s % arg1 arg2"

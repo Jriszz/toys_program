@@ -1,0 +1,412 @@
+3.5.4结合赋值和运算符
++=,*=,%=
+注释：如果运算符得到一个值，左侧操作数的类型不同，会发生强制类型转换，如以下语句：
+x += 3.5;
+
+3.5.5 自增与自减运算符
+++，--
+前缀先加1，后缀会先使用原来的值
+
+3.5.6 关系与boolean运算符
+==，！=
+3 == 7 表示 False
+
+3！= 7 表示 True
+沿用C++做法，&&表示与运算，||表示或运算，！表示非运算，&&与||按照“短路”方式，第一个表达式满足条件，不计算第二个操作数
+
+3.5.7 位运算
+之后重点查看
+
+3.5.8 括号与运算符级别
+
+1.&&的优先级高于||
+a && b|| c
+等价于
+（a && b）|| c
++=是右结合运算符
+	a += b += c
+等价于
+	a+=(b +=c)
+
+3.5.9 枚举类型
+
+针对这种情况，可以自定义枚举类型
+enum Size{SMALL,MEDIUM,LARGE,EXTRA_LARGE}
+
+可以声明这种类型的变量
+Size s = Size.MEDIUM;
+Size 类型只存储这个类型声明中给定的某个枚举值
+
+3.6 字符串
+String greeting = "Hello";
+
+String s = greeting.substring(0,3);
+创建一个字符“Hel”组成的字符串，substring（0,3）复制位置为0,1,和2，不包括尾数
+substring 的工作方式有一个优点：容易计算长度 substring（a,b）b-a
+
+3.6.2 拼接
+用 “+”进行拼接
+
+3.6.3 不可变字符串
+
+greeting = greeting.substring(0,3) + "p!";
+
+当前值修改为“Help!”
+
+3.6.4 检测字符串是否相等
+
+可以使用equals方法检测两个字符串是否相等
+s.equals()
+
+不区分大小写
+s.equalsIgnoreCase()
+
+== 运算符，这个运算符只能够确定两个字符串是否放在同一位置
+如果虚拟机将相同的字符串共享，就可以使用 == 运算符去检测是否相等
+
+3.6.5 空串与NULL串
+
+空串“”是长度为0的字符串。可以调用字符串是否为空：
+if(str.length() == 0)
+
+或
+if(str.equals(""))
+
+空串是一个java对象，有自己的长度（0）和内容（空），String变量存放一个特殊值null
+检测字符串是否为null
+if（str == null）
+
+3.6.6 码点和代码单元
+
+index = greeting.offsetByCodePoints(0, index); //指定str中的index
+cha = greeting.charAt(index); //获取字符串指定index的字符
+cp = greeting.codePointAt(index); //获取指定index中字符的码点
+
+
+遍历字符串码点可以把它转换成数组
+int [] codePoints = str.codePoints().toArrays();
+
+
+2018-04-17
+
+3.6.9 构建字符串
+
+构建字符串，利用读取文件或按键产生的字符，采用字符串连接方式达到此目的效率较低，每次会产生新的对象，使用StringBuilder类可以避免此问题发生
+
+StringBuilder builder = new StringBuilder();
+
+添加字符方法：
+builder.appender(ch);
+
+需要构建字符串时调用toString方法，可完整得到String对象，其中包含构建器中的字符序列
+
+String completedString = builder.toString();
+
+3.7.1 读取输入
+Scanner in = new Scanner(System.in); --创建输入对象
+System.out.printIn() --打印
+
+System.out.printIn()
+in.nextlnt() --读取整数
+in.next() --读取单个单词
+in.nextLine() --读取一行
+in.nextDouble --读取浮点数
+in.hasNext() --判断是否存在
+注：因为输入时可见的，所以Scanner类不适合从控制台读取密码，JavaSE 6特别引入Console类实现此目的，要想读取一个密码，可以采用下列代码：
+Console cons = System.console()
+String username = cons.readlines("User name:");
+char[] passwd = cons.readPassword("Password:");
+为安全起见，返回的密码存放在一维字符数组中，而不是字符串中，在对密码进行处理
+
+3.7.2 格式化输出
+
+使用静态的String.format 方法创建一个格式化的字符串，而不打印输出。
+
+String message = String.format("Hello,%s.Next year ,you'll be %d",name,age)
+
+2018-04-18
+
+3.7.3 文件输入输出
+
+Scanner in = new Scanner (Path.get("myfile.txt"),"utf-8")
+如果文件名中包含反斜杠符号，就要在反斜杠之前加一个反斜杠。
+
+Scanner(File f)
+构造一个给定文件中读取数据的Scanner
+
+Scanner(String data)
+构造一个给定字符串读取数据的Scanner
+
+PrintWriter(String fileName)（new FileWriter("filename")）;
+构造一个将数据写入文件的PrintWriter。
+
+static Path get(String pathname)
+给定路径名构造一个path。
+
+3.8 控制流程
+
+3.8.1 条件语句
+if(condition) statement
+if(condition){}else if(condition){}
+
+3.8.2 循环
+
+while(condition) statement
+do{} while(condition) --先循环后判断
+
+for循环 for（i;i<MAX;i+1）
+尽管Java允许在for循环的各个部分放置任何表达式个部分应该对同一个计数器变量进行初始化、检测和更新。若不遵守这一 规则，
+编写的循环常常晦涩难懂
+
+3.8.5多重选择：switch语句
+
+一般情况下不使用switch语句
+
+3.8.6 中段控制流程语句
+
+break 跳出循环，但是需要注意，在while循环中，为了避免重复检测，有些程序员更偏爱使用break语句。
+
+continue 跳过当次循环
+
+Scanner in = new Scanner(System.in); 
+while (sum < goal )
+{
+System.out.print("Enter a number: ")； 
+n = in.nextlntO；
+if (n < 0) continue;
+sum += n; // not executed if n < 0
+}
+
+如果n<0, 则continue 语句越过了当前循环体的剩余部分，立刻跳到循环首部。 
+
+3.9 大数值
+使用java.math包中的两个很有用的类：BigInteger 和 BigDecimal。这两个类可以处理包含长度数字序列的数值
+
+使用静态方法将普通数值转换为大数值
+BigInteger.valueof();
+BigDecimal.valueof();
+Biglnteger 类实现了任意精度的整数运算，BigDecimal 实现了任意精度的浮点数运算。
+BigDecimal add(BigDecimal other)
+? BigDecimal subtract(BigDecimal other) 
+? BigDecimal multipiy(BigDecimal other) 
+? BigDecimal divide(BigDecimal other RoundingMode mode) 5.0
+返回这个大实数与另一个大实数other 的和、差、积、商。要想计算商，必须给出舍 入方式（rounding mode 。) RoundingMode.HALF UP 是在学校中学习的四舍五入方式
+
+
+
+3.10 数组
+
+数组是一种数据结构，用来存储同一种类型值的集合，例如，如果a是一个整型数组，a[i]就是数组中下标为i的整型
+
+下面声明整型数组a：
+int[] a;
+
+int[] a = new int[100];
+创建一个可以存储100个整数的数组
+
+警告：如果创建一个100个元素的数组，并试图访问元素a[100]（任何在0-99之外的下标），程序会引发“array index out of bounds”异常而终结
+
+2018-04-19
+3.10.1 for each循环
+Java有一种功能很强的循环结构。
+for(variable:collection) statement
+定义一个变量暂存集合中每个元素，执行相应的语句。collection该集合表达式必须是数组或是实现Iterable接口的类对象
+
+例如：
+for(int element :a)
+	System.out.println(element)
+打印数组a的每一个元素，一个元素占一行。
+
+获取数组元素个数 array.length
+
+
+3.10.2 数组初始化以及匿名数组
+
+int [] smallPrimes = {2,5,6,11,23};
+
+
+这是下列数组数值传递的简写形式：
+int[] anonymous = {17,19,23,29,31,37};
+int[] smallPrimes = anonymous;
+for(int element: smallPrimes):
+	System.out.printIn(element);
+
+3.10.3 数组拷贝
+
+在Java中，允许将一个数组变量拷贝给另外一个数组变量，这两个变量引用同一数组
+int[] luckyNumbers = smallPrimes;
+luckyNumbers[5] = 12;
+
+一个数组所有值拷贝给另外一个数组中去，就要使用Arrays类中的copyOf方法：
+int [] copiedLuckyNumbers = Arrays.copyof(luckyNumbers.2*luckyNumber.length);
+第二个参数是新数组的长度，这个方法用来增加数组的大小。
+
+C++注释：Java数组与C++堆栈不同，基本上与分配在堆上的数组指针一样。
+
+3.10.4命令行参数
+
+参数main方法，这个参数表明main方法接收一个字符串数组main（String[] args），也就是命令行参数
+Java classname -g cruel world
+
+
+3.10.5 数组排序
+
+对数值型数组进行排序，可以使用Arrays类中的方法sort：
+int[] a = new int[1000];
+
+这个方法使用优化的快速排序算法。
+
+static boolean equals(type[] a,type[] b)
+比较两个数组大小
+
+3.10.6 多维数组
+稍后再看
+
+2018-04-20
+
+第四章 对象与类
+
+
+4.3.7基于类的访问权限
+
+
+静态域与静态方法：
+
+class Employee
+{
+  private static int nextId = 1;
+  private int id;
+}
+
+每一个雇员对象都有一个自己的id域，这个类的所有实例共享一个nextId域
+
+注释：在绝大多数的面向对象程序设计语言中，静态域被称为类域，如果harry是一个Employee对象，可以用harry.getNextId()代替Employee.getNextId(),由于这种方式容易造成混淆，我们建议使用类名进行访问静态方法。
+
+
+4.4.4 工厂方法
+
+静态方法另外一个常见的用途，就是使用静态工厂方法类构造对象，如工厂方法LocalDate.now和LocalData.of.
+
+为什么不利用构造器完成这些操作？这主要原因：
+
+NumberFormat currencyFormatter = NumberFormat.getCurrencylnstanceO;
+NumberFormat percentFormatter = NumberFormat.getPercentlnstance()； 
+double x = 0.1;
+System.out.println(currencyFormatter.format(x)); // prints SO.10 
+System.out.println(percentFomatter.format(x)); // prints 10%
+
+为什么NumberFormat 类不利用构造器完成这些操作呢？这主要有两个原因： 
+?无法命名构造器。构造器的名字必须与类名相同。但是，这里希望将得到的货币实例
+和百分比实例采用不用的名字。 
+
+
+当使用构造器时，无法改变所构造的对象类型。而Factory 方法将返回一个DecimalFormat
+类对象，这是NumberFormat 的子类
+
+
+工厂模式：
+简单工厂：
+抽象工厂：此模式为一个产品家族提供了统一的创建接口。当需要这个产品家族的某一系列的时候，可以从抽象工厂中选出相对系的系列来创建一个具体的工厂类别。
+工厂方法：这两个模式区别在于需要创建对象的复杂程度上。
+
+public class Factory{
+    public static ISample creator(int which){
+        if (which==1)
+            return new SampleA();
+        else if (which==2)
+            return new SampleB();
+    }
+}
+
+整个过程不涉及ISample的具体实现类，达到封装效果，也就减少错误修改的机会。
+
+假设有代码包A和代码包B，
+代码包B是代码包A的调用者，A向B暴露接口InterfaceA。
+在A的内部结构中，实现了InterfaceA的有ClassA1,ClassA2,ClassA3,……ClassA100。
+
+工厂类降低耦合，尽量不自己new对象。
+
+“按....调用（call by）”是一个标准的计算机科学术语。它用来描述各种程序设计语言中方法参数的传递方式。
+Java程序设计语言总是按值调用。
+
+1.参数名意义化
+2.this调用另外一个构造器
+public Employee(double s)
+{
+// calls Employee(String, double) 
+this("Employee #" + nextld, s); 
+nextld++;
+}
+
+初始化块，构造类的对象，这些块会被执行
+{
+id = nextId;
+nextId++;
+}
+静态初始化块
+static
+{
+Random generator = new Random();
+nextOd = generator.nextInt(1000);	
+}
+4.7 包
+1.一个类可以使用所属包中的所有类，以及其他包中的公共类
+2.标准的Java类库分布在多个包中，如果在程序中导入两个包
+import java.util.*;
+1.把类放到一个目录中，例如/home/user/classdir.
+2.将JAR文件放在一个目录中，例如：/home/user/archives
+3.设置类路径。
+
+4.8 多态
+
+1.而如果我们用一个父类型去引用子类对象时，会先访问到子类中重写的父类方法（父类的方法不会再执行），如果子类没有重写父类的方法，才会执行父类中的重写办法。
+
+由于Manager 类的构造器不能访问Employee类的私有域，所以我们必须利用Employee类的构造器对这部分私有域进行初始化，可以通过super（）。
+
+
+
+
+大家都知道，将类中的域标记为private，方法标记为public。
+
+5.2.2 相等测试与继承
+
+Ojbect类是Java中
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
