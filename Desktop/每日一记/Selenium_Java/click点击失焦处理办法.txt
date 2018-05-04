@@ -1,2 +1,0 @@
-driver.findElement(By.partialLinkText(xx)).findElement(By.xpath("..")).click(); --点击父级目录
-driver.findElement(By.partialLinkText(xx)).click(); --点击当前目录
